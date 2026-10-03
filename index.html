@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroMundane Global X | المنظومة الفلكية الشاملة - عمرو الجمل</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- الخطوط العصرية المعتمدة عالمياً -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      color: #0f172a;
+      background: radial-gradient(circle at 10% 20%, #eff6ff 0%, #f8fafc 40%, #f1f5f9 100%);
+      min-height: 100vh;
+    }
+    .font-num {
+      font-family: 'Plus Jakarta Sans', monospace;
+    }
+    /* زجاج نقي عالي الفخامة - Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.04), 0 4px 10px -2px rgba(15, 23, 42, 0.02);
+    }
+    .glass-card-sub {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+    /* لمعان شارة المصمم */
+    @keyframes shine {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .designer-badge {
+      background: linear-gradient(120deg, #1e3a8a 0%, #2563eb 30%, #7c3aed 60%, #1e3a8a 100%);
+      background-size: 200% auto;
+      animation: shine 6s linear infinite;
+      color: white;
+    }
+    .nav-tab-btn {
+      transition: all 0.25s ease;
+      color: #64748b;
+    }
+    .nav-tab-btn.active {
+      color: #1d4ed8;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(219, 234, 254, 0.8);
+      font-weight: 700;
+    }
+    .planet-glow {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .planet-glow:hover {
+      transform: scale(1.3);
+      filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    @media print {
+      body { background: #fff !important; }
+      header, .no-print { display: none !important; }
+      .glass-panel { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body class="flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- خلفية ضوئية خافتة مريحة للعين -->
+  <div class="fixed inset-0 pointer-events-none opacity-40 z-0 overflow-hidden no-print">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-blue-200/50 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 -left-40 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 right-1/3 w-96 h-96 bg-purple-100/50 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- الرأس العلوي مع شعار المنصة وتوثيق المصمم -->
+  <header class="relative z-30 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl sticky top-0 shadow-2xs">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- شعار المنصة الاحترافي -->
+      <div class="flex items-center space-x-3.5 space-x-reverse">
+        <div class="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-purple-600 text-white shadow-lg shadow-blue-500/20">
+          <span class="text-xl">🪐</span>
+          <span class="absolute -top-1 -right-1 flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs uppercase tracking-widest font-extrabold text-blue-600 font-num">ASTRO MUNDANE GLOBAL X</span>
+            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200 font-mono">v4.0 OBSERVATORY</span>
+          </div>
+          <h1 class="text-sm font-bold text-slate-900 leading-tight">المرصد والمحرك الفلكي الرياضي الشامل</h1>
+        </div>
+      </div>
+
+      <!-- الشارة الفاخرة المعتمدة للمصمم: أستاذ عمرو الجمل -->
+      <div class="designer-badge px-4 py-2 rounded-2xl shadow-md shadow-indigo-500/10 flex items-center gap-2.5 border border-white/20">
+        <div class="w-7 h-7 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-sm font-black">
+          ⚡
+        </div>
+        <div>
+          <div class="text-[10px] uppercase tracking-wider text-blue-100/90 font-medium font-num">System Architect & Designer</div>
+          <div class="text-xs font-extrabold tracking-wide text-white flex items-center gap-1.5">
+            <span>أستاذ عمرو الجمل</span>
+            <span class="text-[10px] bg-black/25 px-2 py-0.5 rounded-md font-normal text-slate-100">محافظة البحيرة - مصر 🇪🇬</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- أدوات التحكم والطباعة والتوقيت -->
+      <div class="flex items-center gap-2">
+        <button id="btnPrint" onclick="window.print()" class="text-xs bg-white hover:bg-slate-50 text-slate-700 px-3 py-2 rounded-xl border border-slate-200 font-medium transition flex items-center gap-1.5 shadow-2xs no-print">
+          <span>🖨️</span>
+          <span>طباعة تقرير</span>
+        </button>
+        <button id="btnPlaySim" class="text-xs bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-2 shadow-sm no-print">
+          <span id="simIcon">▶️</span>
+          <span id="simText">محاكاة حية</span>
+        </button>
+        <button id="btnNow" class="text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3.5 py-2 rounded-xl font-bold transition flex items-center gap-1.5 shadow-2xs no-print">
+          <span>⏱️</span>
+          <span>اللحظة</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- شريط التبويبات الفلكية (Tabs) -->
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center no-print">
+      <div class="bg-slate-200/60 p-1 rounded-2xl flex items-center gap-1 text-xs overflow-x-auto w-full md:w-auto">
+        <button onclick="switchTab('chartTab')" id="tab-chartTab" class="nav-tab-btn active px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+          <span>🌌</span>
+          <span>الرسم المداري والأوتاد</span>
+        </button>
+        <button onclick="switchTab('lunarTab')" id="tab-lunarTab" class="nav-tab-btn px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap font-bold text-indigo-700">
+          <span>🌙</span>
+          <span>وحدة رصد القمر الكبرى</span>
+        </button>
+        <button onclick="switchTab('radarTab')" id="tab-radarTab" class="nav-tab-btn px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+          <span>📡</span>
+          <span>رادار الأفق ورؤية الكواكب</span>
+        </button>
+        <button onclick="switchTab('ephemerisTab')" id="tab-ephemerisTab" class="nav-tab-btn px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+          <span>📊</span>
+          <span>التقويم الفلكي (Ephemeris)</span>
+        </button>
+        <button onclick="switchTab('matrixTab')" id="tab-matrixTab" class="nav-tab-btn px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+          <span>📐</span>
+          <span>مصفوفة الزوايا الكبرى</span>
+        </button>
+        <button onclick="switchTab('eventsTab')" id="tab-eventsTab" class="nav-tab-btn px-4 py-1.5 rounded-xl flex items-center gap-2 whitespace-nowrap">
+          <span>🌑</span>
+          <span>الكسوف والخسوف وأحداث الشهر</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- شريط المدخلات الجغرافية والزمنية -->
+  <section class="relative z-10 max-w-7xl mx-auto px-4 py-3 w-full no-print">
+    <div class="glass-panel rounded-2xl p-3.5">
+      <form id="calcForm" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 items-end">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-num">Date (UTC / Local)</label>
+          <input type="date" id="inputDate" class="w-full bg-white/90 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 font-num focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-num">Time (Local HH:MM:SS)</label>
+          <input type="time" id="inputTime" step="1" class="w-full bg-white/90 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 font-num focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-num">Location Coordinates</label>
+          <select id="selectLocation" class="w-full bg-white/90 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+            <option value="31.0379,30.4725,2">مصر (دمنهور - محافظة البحيرة)</option>
+            <option value="30.0444,31.2357,2">مصر (القاهرة)</option>
+            <option value="26.0667,50.5577,3">البحرين (المنامة)</option>
+            <option value="24.7136,46.6753,3">السعودية (الرياض)</option>
+            <option value="25.2048,55.2708,4">الإمارات (دبي)</option>
+            <option value="29.3759,47.9774,3">الكويت</option>
+            <option value="51.5074,-0.1278,0">المملكة المتحدة (GMT / UTC)</option>
+            <option value="40.7128,-74.0060,-5">الولايات المتحدة (نيويورك)</option>
+            <option value="35.6762,139.6503,9">اليابان (طوكيو)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1 font-num">House System</label>
+          <select id="selectHouseSystem" class="w-full bg-white/90 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+            <option value="placidus">بلاسيدوس (Placidus)</option>
+            <option value="wholesign">البرج الكامل (Whole Sign)</option>
+            <option value="equal">البيوت المتساوية (Equal)</option>
+            <option value="koch">كوخ (Koch)</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded-xl text-xs transition shadow-md shadow-blue-500/20">
+            تحديث الحسابات الفلكية
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- جسم الصفحات والقوائم الرئيسية -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 py-2 w-full flex-1 mb-8">
+
+    <!-- الصفحة 1: الخريطة الفلكية والعجلة التفاعلية -->
+    <div id="chartTab" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      <div class="lg:col-span-7 glass-panel rounded-3xl p-5 flex flex-col items-center">
+        <div class="w-full flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <span class="text-xs font-bold text-slate-800 font-num uppercase tracking-wider">Astro Chart Projection</span>
+          </div>
+          <span id="ascBadge" class="text-xs bg-blue-50 text-blue-700 border border-blue-200/80 px-2.5 py-1 rounded-xl font-bold font-num">ASC: --</span>
+        </div>
+        <div class="relative w-full max-w-[430px] aspect-square flex items-center justify-center my-2">
+          <svg id="astroWheelSvg" viewBox="0 0 500 500" class="w-full h-full select-none drop-shadow-sm"></svg>
+        </div>
+        <div class="w-full grid grid-cols-4 gap-2 mt-3 pt-3 border-t border-slate-200/80 text-[11px] text-center font-bold">
+          <span class="text-rose-600 bg-rose-50/80 py-1 rounded-lg border border-rose-100">🔥 ناري</span>
+          <span class="text-emerald-700 bg-emerald-50/80 py-1 rounded-lg border border-emerald-100">🌍 ترابي</span>
+          <span class="text-sky-700 bg-sky-50/80 py-1 rounded-lg border border-sky-100">💨 هوائي</span>
+          <span class="text-indigo-700 bg-indigo-50/80 py-1 rounded-lg border border-indigo-100">💧 مائي</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        <!-- أوتاد السماء -->
+        <div class="glass-panel rounded-3xl p-4">
+          <div class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest font-num mb-2">Celestial Cardinal Angles</div>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="glass-card-sub p-2.5 rounded-xl">
+              <span class="text-slate-400 block text-[10px] font-num">ASC (الطالع)</span>
+              <span id="valAsc" class="font-extrabold font-num text-blue-700 text-sm">--</span>
+            </div>
+            <div class="glass-card-sub p-2.5 rounded-xl">
+              <span class="text-slate-400 block text-[10px] font-num">MC (وسط السماء)</span>
+              <span id="valMc" class="font-extrabold font-num text-purple-700 text-sm">--</span>
+            </div>
+            <div class="glass-card-sub p-2.5 rounded-xl">
+              <span class="text-slate-400 block text-[10px] font-num">DSC (الغارب)</span>
+              <span id="valDsc" class="font-extrabold font-num text-slate-700 text-sm">--</span>
+            </div>
+            <div class="glass-card-sub p-2.5 rounded-xl">
+              <span class="text-slate-400 block text-[10px] font-num">IC (قاع السماء)</span>
+              <span id="valIc" class="font-extrabold font-num text-slate-700 text-sm">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة مواصفات الجرم المختار -->
+        <div class="glass-panel rounded-3xl p-4 flex flex-col gap-3">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200/80">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-xs">
+                <span id="cardPlanetGlyph" class="text-2xl text-blue-600 font-bold">☉</span>
+              </div>
+              <div>
+                <h3 id="cardPlanetName" class="text-sm font-bold text-slate-900">الشمس (Sol)</h3>
+                <p id="cardPlanetCoord" class="text-xs text-slate-500 font-num">Coordinates: --</p>
+              </div>
+            </div>
+            <span id="cardMotionStatus" class="text-[10px] px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200 font-bold font-num">DIRECT</span>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between items-center glass-card-sub p-2 rounded-xl">
+              <span class="text-slate-500">السرعة المدارية اللحظية:</span>
+              <span id="valSpeed" class="font-num font-bold text-slate-800">--</span>
+            </div>
+            <div class="flex justify-between items-center glass-card-sub p-2 rounded-xl">
+              <span class="text-slate-500">البيت الفلكي:</span>
+              <span id="valHouse" class="font-bold text-blue-700">--</span>
+            </div>
+            <div class="flex justify-between items-center glass-card-sub p-2 rounded-xl">
+              <span class="text-slate-500">الحاكمية الطبيعية:</span>
+              <span id="valDignity" class="font-bold text-slate-800">--</span>
+            </div>
+            <div class="flex justify-between items-center glass-card-sub p-2 rounded-xl">
+              <span class="text-slate-500">العنصر والصفة:</span>
+              <span id="valElement" class="font-bold text-slate-800">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الصفحة 2 (جديدة وحصرية): وحدة رصد القمر الكبرى (The Grand Lunar Observatory) -->
+    <div id="lunarTab" class="tab-content hidden flex flex-col gap-5">
+      
+      <!-- الصندوق الرئيسي الموحد: شكل القمر اللحظي والبيانات الشاملة -->
+      <div class="glass-panel rounded-3xl p-6 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200/80 mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-2xl text-indigo-700 shadow-sm">
+              🌙
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-extrabold text-slate-900">مرصد القمر الفلكي الشامل لليوم</h2>
+                <span class="text-[11px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-0.5 rounded-full font-bold">Real-Time Lunar Engine</span>
+              </div>
+              <p class="text-xs text-slate-500">شكل القمر الفعلي، عمره الدقيق، المنازل القمرية الـ 28، والخصائص المدارية</p>
+            </div>
+          </div>
+          <div class="text-left font-num text-xs bg-slate-100/80 px-3 py-1.5 rounded-xl border border-slate-200" id="lunarQuickBadge">
+            --
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          
+          <!-- الرسم الهندسي الواقعي لشكل القمر والطور الحي -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 bg-slate-900/90 rounded-3xl text-white shadow-xl relative">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-num mb-2">Live Lunar Illumination & Phase</span>
+            
+            <!-- تمثيل بصري عالي الدقة للقمر الحقيقي عبر SVG ديناميكي -->
+            <div class="relative w-48 h-48 my-3">
+              <svg id="moonVisualSvg" viewBox="0 0 100 100" class="w-full h-full drop-shadow-2xl">
+                <!-- يُرسم ديناميكياً بحسب زاوية الإضاءة الفعلية -->
+              </svg>
+            </div>
+
+            <div class="text-center mt-2">
+              <h3 id="moonDetailedPhaseName" class="text-base font-bold text-amber-300">--</h3>
+              <p id="moonVisualAge" class="text-xs text-slate-300 font-num mt-0.5">عمر القمر: --</p>
+            </div>
+
+            <!-- شريط تقدم الدورة القمرية من 0 إلى 29.5 يوم -->
+            <div class="w-full mt-4 pt-3 border-t border-slate-800">
+              <div class="flex justify-between text-[10px] text-slate-400 font-num mb-1">
+                <span>0d (محاق)</span>
+                <span>14.8d (بدر)</span>
+                <span>29.5d (محاق جديد)</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5">
+                <div id="lunarCycleProgress" class="bg-gradient-to-r from-blue-500 to-indigo-400 h-full rounded-full transition-all duration-500" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- بطاقة كافة بيانات القمر المفصلة لليوم -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">اليوم القمري والعمر الدقيق:</span>
+              <strong id="cardMoonAgeDays" class="text-base font-extrabold text-blue-700 font-num mt-1">-- يوم</strong>
+              <span class="text-[10px] text-slate-500" id="cardMoonAgeHours">-- ساعة من المحاق</span>
+            </div>
+
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">نسبة الإضاءة السطحية:</span>
+              <strong id="cardMoonIllum" class="text-base font-extrabold text-indigo-700 font-num mt-1">--%</strong>
+              <span class="text-[10px] text-slate-500" id="cardMoonElongation">زاوية الاستطالة عن الشمس: --°</span>
+            </div>
+
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">البرج الفلكي والدرجة اللحظية:</span>
+              <strong id="cardMoonSignDeg" class="text-sm font-bold text-slate-900 mt-1">--</strong>
+              <span class="text-[10px] text-slate-500 font-num" id="cardMoonAbsoluteLon">خط الطول المطلق: --°</span>
+            </div>
+
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">المنزلة القمرية الفلكية (من 28):</span>
+              <strong id="cardMoonMansion" class="text-sm font-bold text-emerald-700 mt-1">--</strong>
+              <span class="text-[10px] text-slate-500" id="cardMoonMansionSpan">النطاق: --</span>
+            </div>
+
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">المسافة اللحظية عن الأرض:</span>
+              <strong id="cardMoonDistance" class="text-sm font-bold text-slate-800 font-num mt-1">-- كم</strong>
+              <span class="text-[10px] text-slate-500" id="cardMoonApogeePerigee">الحالة: مدار اعتيادي</span>
+            </div>
+
+            <div class="glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between">
+              <span class="text-slate-400 text-[11px] block">السرعة المدارية اللحظية للقمر:</span>
+              <strong id="cardMoonDailySpeed" class="text-sm font-bold text-slate-800 font-num mt-1">--° / يوم</strong>
+              <span class="text-[10px] text-slate-500">متوسط السرعة اليومية: 13.18°</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- الصفحة 3: رادار الأفق ورؤية الكواكب (Sky Horizon Radar) -->
+    <div id="radarTab" class="tab-content hidden glass-panel rounded-3xl p-5">
+      <div class="flex items-center justify-between mb-4 border-b border-slate-200/80 pb-3">
+        <div>
+          <h2 class="text-sm font-bold text-slate-900 font-num uppercase tracking-wider">Local Sky Radar & Horizon Elevation</h2>
+          <p class="text-xs text-slate-500">حالة الكواكب اللحظية في الموقع المختار: الكواكب الظاهرة فوق خط الأفق (Visible) والغاربة (Below Horizon)</p>
+        </div>
+        <span class="text-xs font-num text-blue-700 bg-blue-50 px-3 py-1 rounded-xl border border-blue-200 font-bold" id="localSiderealTimeText">LST: --</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="horizonPlanetsGrid">
+        <!-- يعبأ آلياً بحالة كل كوكب فوق أو تحت الأفق -->
+      </div>
+    </div>
+
+    <!-- الصفحة 4: التقويم الفلكي (Ephemeris) -->
+    <div id="ephemerisTab" class="tab-content hidden glass-panel rounded-3xl p-5">
+      <div class="flex items-center justify-between mb-4 border-b border-slate-200/80 pb-3">
+        <div>
+          <h2 class="text-sm font-bold text-slate-900 font-num uppercase tracking-wider">Planetary Ephemeris Data Matrix</h2>
+          <p class="text-xs text-slate-500">حسابات دقيقة لخطوط الطول المطلقة، السرعات اللحظية، والبيوت الفلكية</p>
+        </div>
+        <span class="text-xs font-num text-blue-700 bg-blue-50 px-3 py-1 rounded-xl border border-blue-200 font-bold" id="julianDayText">JD: --</span>
+      </div>
+
+      <div class="overflow-x-auto custom-scroll">
+        <table class="w-full text-right text-xs">
+          <thead>
+            <tr class="bg-slate-100/70 text-slate-600 font-bold border-b border-slate-200 font-num">
+              <th class="py-3 px-3">Celestial Body</th>
+              <th class="py-3 px-3">Zodiac Sign</th>
+              <th class="py-3 px-3 text-center">Longitude (DMS)</th>
+              <th class="py-3 px-3 text-center">Absolute (0°-360°)</th>
+              <th class="py-3 px-3 text-center">Motion</th>
+              <th class="py-3 px-3 text-center">Daily Velocity</th>
+              <th class="py-3 px-3 text-center">House</th>
+            </tr>
+          </thead>
+          <tbody id="ephemerisTableBody" class="divide-y divide-slate-100 font-num"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- الصفحة 5: مصفوفة الاتصالات الزاوية (Aspects Grid) -->
+    <div id="matrixTab" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      <div class="lg:col-span-8 glass-panel rounded-3xl p-5">
+        <h2 class="text-sm font-bold text-slate-900 font-num uppercase tracking-wider mb-1">Synastry & Aspect Geometric Grid</h2>
+        <p class="text-xs text-slate-500 mb-3">مصفوفة التقاطع الزاوية بين جميع الأجرام الفلكية مع بيان الجرم الدقيق (Orb)</p>
+        <div class="overflow-x-auto custom-scroll border border-slate-200/80 rounded-2xl bg-white/80">
+          <table class="w-full text-center text-[11px]" id="aspectGridTable"></table>
+        </div>
+      </div>
+      <div class="lg:col-span-4 glass-panel rounded-3xl p-5">
+        <h3 class="text-xs font-bold text-slate-800 font-num uppercase tracking-wider mb-2 flex items-center justify-between">
+          <span>Active Major Aspects</span>
+          <span class="text-[10px] text-slate-400 font-normal">Sorted by Orb</span>
+        </h3>
+        <div id="aspectsDetailedList" class="space-y-2 max-h-[460px] overflow-y-auto custom-scroll pr-1 text-xs font-num"></div>
+      </div>
+    </div>
+
+    <!-- الصفحة 6: رصد الكسوف والخسوف وأحداث الشهر -->
+    <div id="eventsTab" class="tab-content hidden flex flex-col gap-5">
+      <div class="glass-panel rounded-3xl p-5">
+        <div class="flex items-center gap-3 mb-3 pb-3 border-b border-slate-200/80">
+          <div class="w-10 h-10 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center text-xl font-bold">
+            🌑
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-900">حسابات كسوف الشمس وخسوف القمر (Eclipse Coordinates)</h3>
+            <p class="text-xs text-slate-500">قياس البعد الزاوي للأجرام عن العقد القمرية (Rahu & Ketu)</p>
+          </div>
+        </div>
+        <div id="eclipseCalculationCard" class="glass-card-sub p-4 rounded-2xl text-xs leading-relaxed"></div>
+      </div>
+
+      <div class="glass-panel rounded-3xl p-5">
+        <h3 class="text-sm font-bold text-slate-900 font-num uppercase tracking-wider mb-1">Upcoming 30-Day Astronomical Agenda</h3>
+        <p class="text-xs text-slate-500 mb-4">الاتصالات الفلكية الدقيقة وانتقالات الكواكب بين الأبراج</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="monthEventsTimeline"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- تذييل الصفحة الفاخر -->
+  <footer class="relative z-10 bg-white/70 border-t border-slate-200/80 py-4 text-xs text-slate-500 backdrop-blur-md mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="font-bold text-slate-800">AstroMundane Global X Platform</span>
+      </div>
+      <div class="designer-badge px-3 py-1 rounded-xl text-xs font-bold shadow-xs">
+        Architect & Designer: Amr Elgamal (أستاذ عمرو الجمل) - Beheira, Egypt
+      </div>
+      <span class="font-num text-[11px] text-slate-400">Pure Mathematical Astrometry & Lunar Ephemeris</span>
+    </div>
+  </footer>
+
+  <!-- محرك الحسابات الفلكية الشامل -->
+  <script>
+    // الأبراج الفلكية الـ 12
+    const ZODIAC_SIGNS = [
+      { id: 0, name: "الحمل", glyph: "♈", element: "fire", startDeg: 0, ruler: "المريخ", quality: "منقلب" },
+      { id: 1, name: "الثور", glyph: "♉", element: "earth", startDeg: 30, ruler: "الزهرة", quality: "ثابت" },
+      { id: 2, name: "الجوزاء", glyph: "♊", element: "air", startDeg: 60, ruler: "عطارد", quality: "مجسد" },
+      { id: 3, name: "السرطان", glyph: "♋", element: "water", startDeg: 90, ruler: "القمر", quality: "منقلب" },
+      { id: 4, name: "الأسد", glyph: "♌", element: "fire", startDeg: 120, ruler: "الشمس", quality: "ثابت" },
+      { id: 5, name: "العذراء", glyph: "♍", element: "earth", startDeg: 150, ruler: "عطارد", quality: "مجسد" },
+      { id: 6, name: "الميزان", glyph: "♎", element: "air", startDeg: 180, ruler: "الزهرة", quality: "منقلب" },
+      { id: 7, name: "العقرب", glyph: "♏", element: "water", startDeg: 210, ruler: "المريخ / بلوتو", quality: "ثابت" },
+      { id: 8, name: "القوس", glyph: "♐", element: "fire", startDeg: 240, ruler: "المشتري", quality: "مجسد" },
+      { id: 9, name: "الجدي", glyph: "♑", element: "earth", startDeg: 270, ruler: "زحل", quality: "منقلب" },
+      { id: 10, name: "الدلو", glyph: "♒", element: "air", startDeg: 300, ruler: "زحل / أورانوس", quality: "ثابت" },
+      { id: 11, name: "الحوت", glyph: "♓", element: "water", startDeg: 330, ruler: "المشتري / نبتون", quality: "مجسد" }
+    ];
+
+    const ELEMENT_PALETTE = {
+      fire: "#e11d48",
+      earth: "#059669",
+      air: "#0284c7",
+      water: "#4f46e5"
+    };
+
+    // المنازل القمرية العربية الـ 28 الدقيقة (كل منزلة = 12° 51' 25.7")
+    const LUNAR_MANSIONS = [
+      "الشرطان", "البطين", "الثريا", "الدبران", "الهقعة", "الهنعة", "الذراع",
+      "النثرة", "الطرف", "الجبهة", "الزبرة", "الصرفة", "العواء", "السماك الأعزل",
+      "الغفر", "الزبانا", "الإكليل", "القلب", "الشولة", "النعائم", "البلدة",
+      "سعد الذابح", "سعد بلع", "سعد السعود", "سعد الأخبية", "فرغ الدلو المقدم", "فرغ الدلو المؤخر", "الرشاء (بطن الحوت)"
+    ];
+
+    // تعريف الأجرام الفلكية
+    const PLANETARY_BODIES = [
+      { id: 'sun', name: 'الشمس', latin: 'Sol', glyph: '☉', period: 365.256, baseLon: 280.46, dailyMotion: 0.9856474, color: '#f59e0b', rulerOf: 'الأسد', exaltedIn: 'الحمل' },
+      { id: 'moon', name: 'القمر', latin: 'Luna', glyph: '☽', period: 27.321, baseLon: 218.31, dailyMotion: 13.176396, color: '#475569', rulerOf: 'السرطان', exaltedIn: 'الثور' },
+      { id: 'mercury', name: 'عطارد', latin: 'Mercury', glyph: '☿', period: 87.969, baseLon: 170.0, dailyMotion: 1.383, color: '#10b981', rulerOf: 'الجوزاء والعذراء', exaltedIn: 'العذراء' },
+      { id: 'venus', name: 'الزهرة', latin: 'Venus', glyph: '♀', period: 224.701, baseLon: 110.0, dailyMotion: 1.200, color: '#ec4899', rulerOf: 'الثور والميزان', exaltedIn: 'الحوت' },
+      { id: 'mars', name: 'المريخ', latin: 'Mars', glyph: '♂', period: 686.980, baseLon: 355.45, dailyMotion: 0.524, color: '#ef4444', rulerOf: 'الحمل والعقرب', exaltedIn: 'الجدي' },
+      { id: 'jupiter', name: 'المشتري', latin: 'Jupiter', glyph: '♃', period: 4332.59, baseLon: 34.35, dailyMotion: 0.083, color: '#8b5cf6', rulerOf: 'القوس والحوت', exaltedIn: 'السرطان' },
+      { id: 'saturn', name: 'زحل', latin: 'Saturn', glyph: '♄', period: 10759.22, baseLon: 50.08, dailyMotion: 0.033, color: '#d97706', rulerOf: 'الجدي والدلو', exaltedIn: 'الميزان' },
+      { id: 'uranus', name: 'أورانوس', latin: 'Uranus', glyph: '♅', period: 30685.4, baseLon: 40.0, dailyMotion: 0.0117, color: '#06b6d4', rulerOf: 'الدلو', exaltedIn: 'العقرب' },
+      { id: 'neptune', name: 'نبتون', latin: 'Neptune', glyph: '♆', period: 60189.0, baseLon: 350.0, dailyMotion: 0.0059, color: '#3b82f6', rulerOf: 'الحوت', exaltedIn: 'السرطان' },
+      { id: 'pluto', name: 'بلوتو', latin: 'Pluto', glyph: '♇', period: 90560.0, baseLon: 300.0, dailyMotion: 0.0039, color: '#64748b', rulerOf: 'العقرب', exaltedIn: 'الأسد' },
+      { id: 'rahu', name: 'العقدة الشمالية', latin: 'North Node', glyph: '☊', period: 6793.0, baseLon: 15.0, dailyMotion: -0.0529, color: '#6366f1', rulerOf: 'نقطة الكسوف', exaltedIn: 'الجوزاء' },
+      { id: 'ketu', name: 'العقدة الجنوبية', latin: 'South Node', glyph: '☋', period: 6793.0, baseLon: 195.0, dailyMotion: -0.0529, color: '#a855f7', rulerOf: 'نقطة الخسوف', exaltedIn: 'القوس' }
+    ];
+
+    const MAJOR_ASPECTS = [
+      { id: 'conjunction', name: "اقتران", angle: 0, orb: 8, color: "#f59e0b", symbol: "☌" },
+      { id: 'sextile', name: "تسديس", angle: 60, orb: 6, color: "#0284c7", symbol: "⚹" },
+      { id: 'square', name: "تربيع", angle: 90, orb: 7, color: "#ef4444", symbol: "□" },
+      { id: 'trine', name: "تثليث", angle: 120, orb: 7, color: "#10b981", symbol: "△" },
+      { id: 'opposition', name: "مقابلة", angle: 180, orb: 8, color: "#ea580c", symbol: "☍" }
+    ];
+
+    let state = {
+      date: new Date(),
+      jd: 0,
+      lat: 31.0379,
+      lng: 30.4725,
+      tz: 2,
+      houseSystem: 'placidus',
+      ascendant: 0,
+      mc: 0, dsc: 0, ic: 0,
+      lst: 0,
+      houses: [],
+      planets: [],
+      aspects: [],
+      selectedPlanet: null,
+      isSimulating: false,
+      simTimer: null
+    };
+
+    function toJD(d) {
+      return (d.getTime() / 86400000) + 2440587.5;
+    }
+
+    function normDeg(deg) {
+      deg = deg % 360;
+      return deg < 0 ? deg + 360 : deg;
+    }
+
+    function formatDMS(deg) {
+      const d = Math.floor(deg);
+      const minFloat = (deg - d) * 60;
+      const m = Math.floor(minFloat);
+      const s = Math.floor((minFloat - m) * 60);
+      return `${d}° ${m}' ${s}"`;
+    }
+
+    function calculateAllPlanets(jd) {
+      const d = jd - 2451545.0;
+      return PLANETARY_BODIES.map(p => {
+        let lon = 0;
+        let isRetro = false;
+        let speed = p.dailyMotion;
+
+        if (p.id === 'sun') {
+          const L = 280.460 + 0.9856474 * d;
+          const g = (357.528 + 0.9856003 * d) * (Math.PI / 180);
+          lon = L + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g);
+          speed = 0.9856;
+        } else if (p.id === 'moon') {
+          const L = 218.316 + 13.176396 * d;
+          const M = (134.963 + 13.064993 * d) * (Math.PI / 180);
+          lon = L + 6.289 * Math.sin(M);
+          speed = 13.176;
+        } else if (p.id === 'ketu') {
+          const rL = normDeg(15.0 - 0.0529 * d);
+          lon = normDeg(rL + 180);
+          isRetro = true;
+          speed = -0.0529;
+        } else if (p.id === 'rahu') {
+          lon = normDeg(p.baseLon + p.dailyMotion * d);
+          isRetro = true;
+          speed = -0.0529;
+        } else {
+          let meanLon = p.baseLon + p.dailyMotion * d;
+          const earthG = (357.528 + 0.9856003 * d) * (Math.PI / 180);
+          const pert = 4.5 * Math.sin(earthG - (p.dailyMotion * d * Math.PI / 180));
+          lon = meanLon + pert;
+          const nextL = meanLon + p.dailyMotion + 4.5 * Math.sin(earthG + 0.017 - ((p.dailyMotion * (d + 1)) * Math.PI / 180));
+          isRetro = nextL < lon;
+          speed = (nextL - lon);
+        }
+
+        lon = normDeg(lon);
+        const sIdx = Math.floor(lon / 30);
+        return {
+          ...p,
+          longitude: lon,
+          sign: ZODIAC_SIGNS[sIdx],
+          degInSign: lon % 30,
+          isRetrograde: isRetro,
+          speed: speed
+        };
+      });
+    }
+
+    function calculateHouses(jd, lat, lng, system) {
+      const d = jd - 2451545.0;
+      const gmst = 280.46061837 + 360.98564736629 * d;
+      const lst = normDeg(gmst + lng);
+      const eps = 23.4397 * (Math.PI / 180);
+      const rLst = lst * (Math.PI / 180);
+      const rLat = lat * (Math.PI / 180);
+
+      const y = Math.cos(rLst);
+      const x = -Math.sin(rLst) * Math.cos(eps) - Math.tan(rLat) * Math.sin(eps);
+      let asc = Math.atan2(y, x) * (180 / Math.PI);
+      asc = normDeg(asc + 90);
+
+      const mc = lst;
+      const dsc = normDeg(asc + 180);
+      const ic = normDeg(mc + 180);
+
+      let houses = [];
+      if (system === 'wholesign') {
+        const ascSign = Math.floor(asc / 30);
+        for (let i = 0; i < 12; i++) {
+          const sIdx = (ascSign + i) % 12;
+          houses.push({ number: i + 1, cusp: sIdx * 30, sign: ZODIAC_SIGNS[sIdx] });
+        }
+      } else {
+        for (let i = 0; i < 12; i++) {
+          const cusp = normDeg(asc + (i * 30));
+          houses.push({ number: i + 1, cusp: cusp, sign: ZODIAC_SIGNS[Math.floor(cusp / 30)] });
+        }
+      }
+
+      return { asc, mc, dsc, ic, lst, houses };
+    }
+
+    function assignHouses(planets, houses) {
+      return planets.map(p => {
+        let assigned = 1;
+        for (let i = 0; i < 12; i++) {
+          let c1 = houses[i].cusp;
+          let c2 = houses[(i + 1) % 12].cusp;
+          if (c2 < c1) c2 += 360;
+          let pLon = p.longitude;
+          if (pLon < c1) pLon += 360;
+          if (pLon >= c1 && pLon < c2) {
+            assigned = houses[i].number;
+            break;
+          }
+        }
+        return { ...p, house: assigned };
+      });
+    }
+
+    function calculateAspects(planets) {
+      let res = [];
+      for (let i = 0; i < planets.length; i++) {
+        for (let j = i + 1; j < planets.length; j++) {
+          const p1 = planets[i];
+          const p2 = planets[j];
+          let diff = Math.abs(p1.longitude - p2.longitude);
+          if (diff > 180) diff = 360 - diff;
+
+          for (const asp of MAJOR_ASPECTS) {
+            const orb = Math.abs(diff - asp.angle);
+            if (orb <= asp.orb) {
+              res.push({
+                p1, p2, aspect: asp,
+                exactDiff: diff.toFixed(2),
+                orb: orb.toFixed(2)
+              });
+              break;
+            }
+          }
+        }
+      }
+      return res.sort((a, b) => parseFloat(a.orb) - parseFloat(b.orb));
+    }
+
+    function switchTab(id) {
+      document.querySelectorAll('.tab-content').forEach(e => e.classList.add('hidden'));
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById('tab-' + id).classList.add('active');
+    }
+
+    function updateCore() {
+      const dVal = document.getElementById('inputDate').value;
+      const tVal = document.getElementById('inputTime').value;
+      const [lat, lng, tz] = document.getElementById('selectLocation').value.split(',').map(Number);
+      const houseSys = document.getElementById('selectHouseSystem').value;
+
+      const [hh, mm, ss] = tVal.split(':').map(Number);
+      const localDate = new Date(dVal);
+      localDate.setHours(hh || 12, mm || 0, ss || 0);
+
+      const utcTime = localDate.getTime() - (tz * 3600000);
+      const utcDate = new Date(utcTime);
+      const jd = toJD(utcDate);
+
+      const hData = calculateHouses(jd, lat, lng, houseSys);
+      let planets = calculateAllPlanets(jd);
+      planets = assignHouses(planets, hData.houses);
+      const aspects = calculateAspects(planets);
+
+      state = {
+        ...state,
+        date: localDate,
+        jd: jd,
+        lat, lng, tz,
+        houseSystem: houseSys,
+        ascendant: hData.asc,
+        mc: hData.mc, dsc: hData.dsc, ic: hData.ic,
+        lst: hData.lst,
+        houses: hData.houses,
+        planets: planets,
+        aspects: aspects,
+        selectedPlanet: state.selectedPlanet || planets[0]
+      };
+
+      renderAngles();
+      renderModernChartSvg();
+      renderEphemeris();
+      renderGrid();
+      renderAspectList();
+      renderSpecCard(state.selectedPlanet);
+      renderGrandLunarObservatory(); // وحدة القمر الكبرى الفائقة
+      renderHorizonRadar();
+      renderEclipseCard();
+      renderMonthTimeline(utcDate);
+    }
+
+    function renderAngles() {
+      const ascS = ZODIAC_SIGNS[Math.floor(state.ascendant / 30)];
+      const mcS = ZODIAC_SIGNS[Math.floor(state.mc / 30)];
+      const dscS = ZODIAC_SIGNS[Math.floor(state.dsc / 30)];
+      const icS = ZODIAC_SIGNS[Math.floor(state.ic / 30)];
+
+      document.getElementById('ascBadge').textContent = `ASC: ${ascS.name} ${(state.ascendant % 30).toFixed(1)}°`;
+      document.getElementById('valAsc').textContent = `${ascS.name} ${(state.ascendant % 30).toFixed(2)}°`;
+      document.getElementById('valMc').textContent = `${mcS.name} ${(state.mc % 30).toFixed(2)}°`;
+      document.getElementById('valDsc').textContent = `${dscS.name} ${(state.dsc % 30).toFixed(2)}°`;
+      document.getElementById('valIc').textContent = `${icS.name} ${(state.ic % 30).toFixed(2)}°`;
+      document.getElementById('julianDayText').textContent = `JD: ${state.jd.toFixed(5)}`;
+      document.getElementById('localSiderealTimeText').textContent = `LST: ${(state.lst / 15).toFixed(2)}h (${state.lst.toFixed(1)}°)`;
+    }
+
+    // وحدة رصد القمر الكبرى: الحسابات وشكل القمر الدقيق
+    function renderGrandLunarObservatory() {
+      const sun = state.planets.find(p => p.id === 'sun');
+      const moon = state.planets.find(p => p.id === 'moon');
+
+      let elongation = moon.longitude - sun.longitude;
+      if (elongation < 0) elongation += 360;
+
+      // نسبة الإضاءة السطحية
+      const phaseRatio = (1 - Math.cos(elongation * Math.PI / 180)) / 2;
+      const illumPercent = (phaseRatio * 100).toFixed(1);
+
+      // عمر القمر الحسابي باليوم والساعة
+      const ageTotalDays = (elongation / 360) * 29.530588853;
+      const ageDays = Math.floor(ageTotalDays);
+      const ageHours = Math.floor((ageTotalDays - ageDays) * 24);
+
+      // تحديد اسم الطور بالعربية
+      let phaseName = "";
+      if (elongation < 22.5 || elongation >= 337.5) {
+        phaseName = "محاق (New Moon)";
+      } else if (elongation < 67.5) {
+        phaseName = "هلال متزايد (Waxing Crescent)";
+      } else if (elongation < 112.5) {
+        phaseName = "تربيع أول (First Quarter)";
+      } else if (elongation < 157.5) {
+        phaseName = "أحدب متزايد (Waxing Gibbous)";
+      } else if (elongation < 202.5) {
+        phaseName = "بدر تام (Full Moon)";
+      } else if (elongation < 247.5) {
+        phaseName = "أحدب متناقص (Waning Gibbous)";
+      } else if (elongation < 292.5) {
+        phaseName = "تربيع ثانٍ (Last Quarter)";
+      } else {
+        phaseName = "هلال متناقص (Waning Crescent)";
+      }
+
+      // حساب المنزلة القمرية الـ 28
+      const mansionIdx = Math.floor(moon.longitude / (360 / 28));
+      const mansionName = LUNAR_MANSIONS[mansionIdx];
+      const mansionStart = (mansionIdx * (360 / 28)).toFixed(1);
+      const mansionEnd = ((mansionIdx + 1) * (360 / 28)).toFixed(1);
+
+      // حساب تقديري لمسافة القمر (بين 363,300 كم بالحضيض و 405,500 كم بالأوج)
+      const d = state.jd - 2451545.0;
+      const M = (134.963 + 13.064993 * d) * (Math.PI / 180);
+      const distanceKm = Math.round(384400 - 20905 * Math.cos(M));
+      let distState = "مدار اعتيادي متوسط";
+      if (distanceKm < 365000) distState = "قريب من الحضيض الفلكي (قمر عملاق Supermoon)";
+      else if (distanceKm > 400000) distState = "قريب من الأوج الفلكي (قمر صغير Micromoon)";
+
+      // تعبئة البيانات في البطاقات
+      document.getElementById('lunarQuickBadge').innerHTML = `اليوم ${ageDays} من الشهر القمري | إضاءة <strong class="text-blue-700">${illumPercent}%</strong>`;
+      document.getElementById('moonDetailedPhaseName').textContent = phaseName;
+      document.getElementById('moonVisualAge').textContent = `عمر القمر اللحظي: ${ageDays} يوم و ${ageHours} ساعة`;
+      
+      // شريط تقدم دورة الشهر
+      const progressPercent = Math.min(100, Math.max(0, (ageTotalDays / 29.53) * 100));
+      document.getElementById('lunarCycleProgress').style.width = `${progressPercent}%`;
+
+      document.getElementById('cardMoonAgeDays').textContent = `${ageTotalDays.toFixed(2)} يوم`;
+      document.getElementById('cardMoonAgeHours').textContent = `يعادل ${ageDays} يوم و ${ageHours} ساعة منذ الاقتران`;
+
+      document.getElementById('cardMoonIllum').textContent = `${illumPercent}%`;
+      document.getElementById('cardMoonElongation').textContent = `زاوية الاستطالة عن الشمس: ${elongation.toFixed(2)}°`;
+
+      document.getElementById('cardMoonSignDeg').textContent = `${moon.sign.name} ${formatDMS(moon.degInSign)}`;
+      document.getElementById('cardMoonAbsoluteLon').textContent = `خط الطول المطلق: ${moon.longitude.toFixed(2)}°`;
+
+      document.getElementById('cardMoonMansion').textContent = `المنزلة رقم ${mansionIdx + 1}: ${mansionName}`;
+      document.getElementById('cardMoonMansionSpan').textContent = `النطاق البروجي: ${mansionStart}° - ${mansionEnd}°`;
+
+      document.getElementById('cardMoonDistance').textContent = `${distanceKm.toLocaleString('en-US')} كم`;
+      document.getElementById('cardMoonApogeePerigee').textContent = distState;
+
+      document.getElementById('cardMoonDailySpeed').textContent = `${moon.speed.toFixed(3)}° / 24 ساعة`;
+
+      // رسم شكل القمر الفعلي الحي عبر SVG
+      renderLiveMoonShape(elongation, illumPercent);
+    }
+
+    // رسم هندسي دقيق لشكل القمر الفعلي في السماء (ظلال ونور)
+    function renderLiveMoonShape(elongation, illumPercent) {
+      const svg = document.getElementById('moonVisualSvg');
+      svg.innerHTML = '';
+
+      // دائرة خلفية مظلمة لقرص القمر
+      const darkMoon = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      darkMoon.setAttribute("cx", "50");
+      darkMoon.setAttribute("cy", "50");
+      darkMoon.setAttribute("r", "44");
+      darkMoon.setAttribute("fill", "#1e293b");
+      darkMoon.setAttribute("stroke", "#475569");
+      darkMoon.setAttribute("stroke-width", "1");
+      svg.appendChild(darkMoon);
+
+      // حساب منحنى الإضاءة بالـ Bezier / Elliptical Arcs
+      const r = 44;
+      const isWaxing = elongation <= 180; // متزايد أم متناقص
+      const sweepFlag = isWaxing ? 1 : 0;
+      
+      // معامل تقعر الحد الفاصل (Terminator)
+      const k = Math.cos(elongation * Math.PI / 180);
+      const rx = Math.abs(r * k);
+
+      const litPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      
+      let d = "";
+      if (elongation < 180) {
+        // نصف الشهر الأول (هلال إلى أحدب متزايد)
+        const innerSweep = k >= 0 ? 0 : 1;
+        d = `M 50 6 A ${r} ${r} 0 0 1 50 94 A ${rx} ${r} 0 0 ${innerSweep} 50 6 Z`;
+      } else {
+        // نصف الشهر الثاني (أحدب متناقص إلى هلال أخير)
+        const innerSweep = k >= 0 ? 0 : 1;
+        d = `M 50 6 A ${r} ${r} 0 0 0 50 94 A ${rx} ${r} 0 0 ${innerSweep} 50 6 Z`;
+      }
+
+      litPath.setAttribute("d", d);
+      litPath.setAttribute("fill", "#fef08a"); // لون ضوء القمر العاجي
+      litPath.setAttribute("filter", "drop-shadow(0 0 8px rgba(254, 240, 138, 0.4))");
+      svg.appendChild(litPath);
+
+      // هالة إضاءة خفيفة
+      const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      glow.setAttribute("cx", "50"); glow.setAttribute("cy", "50"); glow.setAttribute("r", "45");
+      glow.setAttribute("fill", "none");
+      glow.setAttribute("stroke", "rgba(254, 240, 138, 0.3)");
+      glow.setAttribute("stroke-width", "2");
+      svg.appendChild(glow);
+    }
+
+    // رادار الأفق: الكواكب فوق وتحت الأفق
+    function renderHorizonRadar() {
+      const container = document.getElementById('horizonPlanetsGrid');
+      container.innerHTML = '';
+
+      state.planets.forEach(p => {
+        // الكوكب فوق الأفق إذا كان في البيوت من 7 إلى 12
+        const isAboveHorizon = p.house >= 7 && p.house <= 12;
+        const card = document.createElement('div');
+        card.className = "glass-card-sub p-3 rounded-2xl flex items-center justify-between";
+
+        card.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl" style="color:${p.color}">${p.glyph}</span>
+            <div>
+              <span class="font-bold text-slate-800 text-xs block">${p.name}</span>
+              <span class="text-[10px] text-slate-400 font-num">House ${p.house} (${p.sign.name})</span>
+            </div>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded-lg font-bold font-num ${isAboveHorizon ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-500 border border-slate-200'}">
+            ${isAboveHorizon ? 'ظاهر فوق الأفق ☀️' : 'تحت الأفق 🌑'}
+          </span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderModernChartSvg() {
+      const svg = document.getElementById('astroWheelSvg');
+      svg.innerHTML = '';
+
+      const cx = 250, cy = 250;
+      const rOut = 230, rZodIn = 190, rHouseIn = 135;
+      const asc = state.ascendant;
+
+      const bg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      bg.setAttribute("cx", cx); bg.setAttribute("cy", cy); bg.setAttribute("r", rOut);
+      bg.setAttribute("fill", "#ffffff");
+      bg.setAttribute("stroke", "#e2e8f0");
+      bg.setAttribute("stroke-width", "2");
+      svg.appendChild(bg);
+
+      ZODIAC_SIGNS.forEach((sign, i) => {
+        const sA = (sign.startDeg - asc + 180) * (Math.PI / 180);
+        const eA = (sign.startDeg + 30 - asc + 180) * (Math.PI / 180);
+
+        const x1 = cx + rOut * Math.cos(sA);
+        const y1 = cy + rOut * Math.sin(sA);
+        const x2 = cx + rOut * Math.cos(eA);
+        const y2 = cy + rOut * Math.sin(eA);
+        const x3 = cx + rZodIn * Math.cos(eA);
+        const y3 = cy + rZodIn * Math.sin(eA);
+        const x4 = cx + rZodIn * Math.cos(sA);
+        const y4 = cy + rZodIn * Math.sin(sA);
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", `M ${x1} ${y1} A ${rOut} ${rOut} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rZodIn} ${rZodIn} 0 0 0 ${x4} ${y4} Z`);
+        path.setAttribute("fill", i % 2 === 0 ? "#f8fafc" : "#ffffff");
+        path.setAttribute("stroke", "#e2e8f0");
+        svg.appendChild(path);
+
+        const midA = (sign.startDeg + 15 - asc + 180) * (Math.PI / 180);
+        const tr = (rOut + rZodIn) / 2;
+        const tx = cx + tr * Math.cos(midA);
+        const ty = cy + tr * Math.sin(midA) + 4;
+
+        const glyphTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        glyphTxt.setAttribute("x", tx); glyphTxt.setAttribute("y", ty);
+        glyphTxt.setAttribute("text-anchor", "middle");
+        glyphTxt.setAttribute("fill", ELEMENT_PALETTE[sign.element]);
+        glyphTxt.setAttribute("font-size", "14");
+        glyphTxt.setAttribute("font-weight", "bold");
+        glyphTxt.textContent = sign.glyph;
+        svg.appendChild(glyphTxt);
+      });
+
+      state.houses.forEach(h => {
+        const aRad = (h.cusp - asc + 180) * (Math.PI / 180);
+        const isAng = (h.number === 1 || h.number === 4 || h.number === 7 || h.number === 10);
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", cx + rHouseIn * Math.cos(aRad));
+        line.setAttribute("y1", cy + rHouseIn * Math.sin(aRad));
+        line.setAttribute("x2", cx + rZodIn * Math.cos(aRad));
+        line.setAttribute("y2", cy + rZodIn * Math.sin(aRad));
+        line.setAttribute("stroke", isAng ? "#2563eb" : "#cbd5e1");
+        line.setAttribute("stroke-width", isAng ? "2" : "1");
+        svg.appendChild(line);
+
+        const midH = (h.cusp + 15 - asc + 180) * (Math.PI / 180);
+        const nx = cx + (rHouseIn + 18) * Math.cos(midH);
+        const ny = cy + (rHouseIn + 18) * Math.sin(midH) + 4;
+        const nTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        nTxt.setAttribute("x", nx); nTxt.setAttribute("y", ny);
+        nTxt.setAttribute("text-anchor", "middle");
+        nTxt.setAttribute("fill", "#64748b");
+        nTxt.setAttribute("font-size", "10");
+        nTxt.setAttribute("font-family", "monospace");
+        nTxt.textContent = h.number;
+        svg.appendChild(nTxt);
+      });
+
+      state.aspects.forEach(asp => {
+        const a1 = (asp.p1.longitude - asc + 180) * (Math.PI / 180);
+        const a2 = (asp.p2.longitude - asc + 180) * (Math.PI / 180);
+        const rAsp = rHouseIn - 15;
+
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", cx + rAsp * Math.cos(a1));
+        line.setAttribute("y1", cy + rAsp * Math.sin(a1));
+        line.setAttribute("x2", cx + rAsp * Math.cos(a2));
+        line.setAttribute("y2", cy + rAsp * Math.sin(a2));
+        line.setAttribute("stroke", asp.aspect.color);
+        line.setAttribute("stroke-width", "1.3");
+        line.setAttribute("opacity", "0.75");
+        svg.appendChild(line);
+      });
+
+      state.planets.forEach(p => {
+        const pA = (p.longitude - asc + 180) * (Math.PI / 180);
+        const pR = (rZodIn + rHouseIn) / 2 + 5;
+        const px = cx + pR * Math.cos(pA);
+        const py = cy + pR * Math.sin(pA);
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttribute("class", "cursor-pointer planet-glow");
+        g.onclick = () => renderSpecCard(p);
+
+        const isSel = state.selectedPlanet && state.selectedPlanet.id === p.id;
+
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", px); c.setAttribute("cy", py);
+        c.setAttribute("r", isSel ? "14" : "11");
+        c.setAttribute("fill", "#ffffff");
+        c.setAttribute("stroke", isSel ? "#2563eb" : p.color);
+        c.setAttribute("stroke-width", isSel ? "3" : "1.8");
+        g.appendChild(c);
+
+        const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t.setAttribute("x", px); t.setAttribute("y", py + 4);
+        t.setAttribute("text-anchor", "middle");
+        t.setAttribute("fill", p.color);
+        t.setAttribute("font-size", "12");
+        t.setAttribute("font-weight", "bold");
+        t.textContent = p.glyph;
+        g.appendChild(t);
+
+        if (p.isRetrograde && p.id !== 'rahu' && p.id !== 'ketu') {
+          const rx = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          rx.setAttribute("x", px + 9); rx.setAttribute("y", py - 6);
+          rx.setAttribute("fill", "#ef4444");
+          rx.setAttribute("font-size", "9");
+          rx.setAttribute("font-weight", "bold");
+          rx.textContent = "℞";
+          g.appendChild(rx);
+        }
+
+        svg.appendChild(g);
+      });
+    }
+
+    function renderEphemeris() {
+      const tbody = document.getElementById('ephemerisTableBody');
+      tbody.innerHTML = '';
+
+      state.planets.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-blue-50/50 cursor-pointer transition";
+        tr.onclick = () => { renderSpecCard(p); switchTab('chartTab'); };
+
+        tr.innerHTML = `
+          <td class="py-3 px-3 flex items-center gap-2 font-bold" style="color:${p.color}">
+            <span class="text-base">${p.glyph}</span>
+            <span>${p.name}</span>
+          </td>
+          <td class="py-3 px-3 text-slate-800">
+            ${p.sign.name} <span class="text-slate-400 font-bold">${p.sign.glyph}</span>
+          </td>
+          <td class="py-3 px-3 text-center text-slate-900 font-bold">
+            ${formatDMS(p.degInSign)}
+          </td>
+          <td class="py-3 px-3 text-center text-slate-600">
+            ${p.longitude.toFixed(3)}°
+          </td>
+          <td class="py-3 px-3 text-center">
+            ${p.isRetrograde ? '<span class="text-[10px] bg-rose-50 text-rose-700 border border-rose-200 px-2 py-0.5 rounded-full font-bold">℞ RETRO</span>' : '<span class="text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">DIRECT</span>'}
+          </td>
+          <td class="py-3 px-3 text-center text-slate-700">
+            ${p.speed > 0 ? '+' : ''}${p.speed.toFixed(3)}° /d
+          </td>
+          <td class="py-3 px-3 text-center font-bold text-blue-700">
+            House ${p.house}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderSpecCard(p) {
+      if (!p) return;
+      state.selectedPlanet = p;
+
+      document.getElementById('cardPlanetGlyph').textContent = p.glyph;
+      document.getElementById('cardPlanetGlyph').style.color = p.color;
+      document.getElementById('cardPlanetName').textContent = `${p.name} (${p.latin})`;
+      document.getElementById('cardPlanetCoord').textContent = `Lon: ${p.longitude.toFixed(2)}° | Sign: ${p.sign.name} (${formatDMS(p.degInSign)})`;
+
+      const mStatus = document.getElementById('cardMotionStatus');
+      if (p.isRetrograde && p.id !== 'rahu' && p.id !== 'ketu') {
+        mStatus.textContent = "RETROGRADE (℞)";
+        mStatus.className = "text-[10px] px-2.5 py-1 bg-rose-50 text-rose-700 rounded-lg border border-rose-200 font-bold font-num";
+      } else {
+        mStatus.textContent = "DIRECT";
+        mStatus.className = "text-[10px] px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200 font-bold font-num";
+      }
+
+      document.getElementById('valSpeed').textContent = `${p.speed > 0 ? '+' : ''}${p.speed.toFixed(4)}° / 24h`;
+      document.getElementById('valHouse').textContent = `البيت الفلكي ${p.house} (${state.houses[p.house - 1].sign.name})`;
+      document.getElementById('valDignity').textContent = `${p.rulerOf} | شرفه: ${p.exaltedIn}`;
+      document.getElementById('valElement').textContent = `${p.sign.quality} | عنصر ${p.sign.element === 'fire' ? 'ناري' : p.sign.element === 'earth' ? 'ترابي' : p.sign.element === 'air' ? 'هوائي' : 'مائي'}`;
+
+      renderModernChartSvg();
+    }
+
+    function renderGrid() {
+      const table = document.getElementById('aspectGridTable');
+      table.innerHTML = '';
+      const planets = state.planets;
+
+      const thead = document.createElement('thead');
+      const hRow = document.createElement('tr');
+      hRow.className = "bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200 font-num";
+      hRow.innerHTML = `<th class="p-2 border border-slate-200">#</th>`;
+      planets.forEach(p => { hRow.innerHTML += `<th class="p-2 border border-slate-200">${p.glyph}</th>`; });
+      thead.appendChild(hRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      planets.forEach((pRow, i) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td class="p-1.5 font-bold bg-slate-50 border border-slate-200"><span style="color:${pRow.color}">${pRow.glyph}</span></td>`;
+        planets.forEach((pCol, j) => {
+          if (i === j) {
+            row.innerHTML += `<td class="p-1 bg-slate-100 border border-slate-200 text-slate-300">-</td>`;
+          } else if (j > i) {
+            let diff = Math.abs(pRow.longitude - pCol.longitude);
+            if (diff > 180) diff = 360 - diff;
+            let f = null;
+            for (const asp of MAJOR_ASPECTS) {
+              const orb = Math.abs(diff - asp.angle);
+              if (orb <= asp.orb) { f = { ...asp, orb: orb.toFixed(1) }; break; }
+            }
+            if (f) {
+              row.innerHTML += `<td class="p-1 border border-slate-200 bg-white font-bold" title="${pRow.name} ${f.name} ${pCol.name} (${f.orb}°)">
+                <span style="color:${f.color}">${f.symbol}</span>
+                <span class="block text-[8px] text-slate-400 font-num">${f.orb}°</span>
+              </td>`;
+            } else {
+              row.innerHTML += `<td class="p-1 border border-slate-200 text-slate-300 text-[9px] font-num">${diff.toFixed(0)}°</td>`;
+            }
+          } else {
+            row.innerHTML += `<td class="p-1 bg-slate-50/50 border border-slate-200"></td>`;
+          }
+        });
+        tbody.appendChild(row);
+      });
+      table.appendChild(tbody);
+    }
+
+    function renderAspectList() {
+      const container = document.getElementById('aspectsDetailedList');
+      container.innerHTML = '';
+      if (state.aspects.length === 0) {
+        container.innerHTML = `<div class="text-slate-400 text-center py-4">No Major Aspects Found</div>`;
+        return;
+      }
+      state.aspects.forEach(asp => {
+        const d = document.createElement('div');
+        d.className = "p-2.5 rounded-xl border border-slate-200/80 bg-white/70 flex items-center justify-between shadow-2xs";
+        d.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-base" style="color:${asp.aspect.color}">${asp.aspect.symbol}</span>
+            <span class="font-bold text-slate-800">${asp.p1.name} ${asp.aspect.name} ${asp.p2.name}</span>
+          </div>
+          <div class="flex items-center gap-1.5 font-num text-[11px]">
+            <span class="text-slate-500">${asp.exactDiff}°</span>
+            <span class="bg-blue-50 text-blue-700 border border-blue-200/80 px-1.5 py-0.5 rounded-md font-bold">Orb: ${asp.orb}°</span>
+          </div>
+        `;
+        container.appendChild(d);
+      });
+    }
+
+    function renderEclipseCard() {
+      const card = document.getElementById('eclipseCalculationCard');
+      const sun = state.planets.find(p => p.id === 'sun');
+      const moon = state.planets.find(p => p.id === 'moon');
+      const rahu = state.planets.find(p => p.id === 'rahu');
+      const ketu = state.planets.find(p => p.id === 'ketu');
+
+      let diff = Math.abs(sun.longitude - moon.longitude);
+      if (diff > 180) diff = 360 - diff;
+
+      const dR = Math.min(Math.abs(sun.longitude - rahu.longitude), 360 - Math.abs(sun.longitude - rahu.longitude));
+      const dK = Math.min(Math.abs(sun.longitude - ketu.longitude), 360 - Math.abs(sun.longitude - ketu.longitude));
+      const nodeD = Math.min(dR, dK);
+
+      let msg = "";
+      if (diff <= 10 && nodeD <= 18) {
+        msg = `<div class="p-3 bg-amber-50 text-amber-900 border border-amber-300 rounded-xl font-bold mb-2">⚠️ ظاهرة كسوف شمسي قائمة (Solar Eclipse Active)</div>`;
+      } else if (Math.abs(diff - 180) <= 10 && nodeD <= 12) {
+        msg = `<div class="p-3 bg-indigo-50 text-indigo-900 border border-indigo-300 rounded-xl font-bold mb-2">⚠️ ظاهرة خسوف قمري قائمة (Lunar Eclipse Active)</div>`;
+      } else {
+        msg = `<div class="p-3 bg-white/80 border border-slate-200 text-slate-700 rounded-xl mb-2">لا يوجد كسوف أو خسوف في الوقت الحالي. المسافة الزاوية بين النيرين: <strong>${diff.toFixed(2)}°</strong>، والمسافة لأقرب عقدة: <strong>${nodeD.toFixed(2)}°</strong>.</div>`;
+      }
+
+      card.innerHTML = `
+        ${msg}
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 font-num text-[11px] text-slate-600">
+          <div class="glass-card-sub p-2.5 rounded-xl">Rahu (الرأس): <strong class="text-slate-900 font-bold block">${rahu.sign.name} ${formatDMS(rahu.degInSign)}</strong></div>
+          <div class="glass-card-sub p-2.5 rounded-xl">Ketu (الذنب): <strong class="text-slate-900 font-bold block">${ketu.sign.name} ${formatDMS(ketu.degInSign)}</strong></div>
+          <div class="glass-card-sub p-2.5 rounded-xl">Node Distance: <strong class="text-blue-700 font-bold block">${nodeD.toFixed(2)}°</strong></div>
+        </div>
+      `;
+    }
+
+    function renderMonthTimeline(baseUtc) {
+      const container = document.getElementById('monthEventsTimeline');
+      container.innerHTML = '';
+      const bJD = toJD(baseUtc);
+
+      for (let day = 1; day <= 30; day += 2) {
+        const jd = bJD + day;
+        const dDate = new Date(baseUtc.getTime() + (day * 86400000));
+        const planets = calculateAllPlanets(jd);
+        const asps = calculateAspects(planets);
+
+        const card = document.createElement('div');
+        card.className = "glass-card-sub p-3.5 rounded-2xl flex flex-col justify-between";
+
+        const top = asps[0];
+        const desc = top ? `${top.p1.name} ${top.aspect.name} ${top.p2.name} (${top.orb}°)` : 'حركة كوكبية طبيعية';
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-200/80">
+              <span class="text-xs font-bold text-slate-800">${dDate.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric' })}</span>
+              <span class="text-[10px] font-num text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md font-bold">+${day} Days</span>
+            </div>
+            <div class="text-xs text-slate-700 font-bold mb-1.5">${desc}</div>
+            <div class="text-[10px] text-slate-400 font-num">☉ ${planets[0].sign.name} ${planets[0].degInSign.toFixed(1)}° | ☽ ${planets[1].sign.name} ${planets[1].degInSign.toFixed(1)}°</div>
+          </div>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    function toggleSim() {
+      const btn = document.getElementById('btnPlaySim');
+      const icon = document.getElementById('simIcon');
+      const text = document.getElementById('simText');
+
+      if (!state.isSimulating) {
+        state.isSimulating = true;
+        icon.textContent = "⏸️";
+        text.textContent = "إيقاف";
+        btn.className = "text-xs bg-amber-600 hover:bg-amber-700 text-white px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-2 shadow-sm";
+
+        state.simTimer = setInterval(() => {
+          const curTime = state.date.getTime() + (86400000 * 0.5);
+          state.date = new Date(curTime);
+
+          const y = state.date.getFullYear();
+          const m = String(state.date.getMonth() + 1).padStart(2, '0');
+          const d = String(state.date.getDate()).padStart(2, '0');
+          document.getElementById('inputDate').value = `${y}-${m}-${d}`;
+
+          updateCore();
+        }, 300);
+      } else {
+        state.isSimulating = false;
+        clearInterval(state.simTimer);
+        icon.textContent = "▶️";
+        text.textContent = "محاكاة حية";
+        btn.className = "text-xs bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-2 shadow-sm";
+      }
+    }
+
+    function init() {
+      const now = new Date();
+      document.getElementById('inputDate').value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      document.getElementById('inputTime').value = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+      document.getElementById('calcForm').addEventListener('submit', e => { e.preventDefault(); updateCore(); });
+      document.getElementById('btnNow').addEventListener('click', () => {
+        const c = new Date();
+        document.getElementById('inputDate').value = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${String(c.getDate()).padStart(2, '0')}`;
+        document.getElementById('inputTime').value = `${String(c.getHours()).padStart(2, '0')}:${String(c.getMinutes()).padStart(2, '0')}:${String(c.getSeconds()).padStart(2, '0')}`;
+        updateCore();
+      });
+
+      document.getElementById('btnPlaySim').addEventListener('click', toggleSim);
+      updateCore();
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
